@@ -3,7 +3,7 @@ import discord, dbl, asyncio
 from crypto_price_scrape import get_price
 
 def main():
-	TOKEN = input()
+	TOKEN = "NTcxNDk3MTU0Nzc5MTUyMzg0.XMOtTw.6FfMMiNuvIws67IpFNMKgf_pJaU"
 	client = discord.Client()
 
 	@client.event
