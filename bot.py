@@ -22,14 +22,13 @@ def main():
 	async def on_message(message):
 		if message.content[:6].lower() == "!price":
 			curr = message.content[7:]
-			print(curr)
 			price = get_price(curr.upper())
 			if price:
 				await message.channel.send("One "+curr.upper()+" is worth $"+str(price))
 			else:
 				await message.channel.send("Sorry that is not a recognised currency")
 		elif message.content[:5].lower() == "!list":
-			await message.channel.send("The following currencies are supported: "+', '.join(get_crypto_list()))
+			await discord_print(message.channel, "The following currencies are supported: "+', '.join(get_crypto_list()))
 		elif message.content[:10].lower() == "!supported":
 			if message.content[11:].upper() in get_crypto_list():
 				await message.channel.send("That currency *is* supported")
@@ -43,8 +42,25 @@ def main():
 		elif message.content.lower() == "!help" or message.content.lower() == "!h":
 			await message.channel.send(HELP_MESSAGE)
 
+	async def discord_print(channel, text, div=" "):
+		out = ""
+		cntr = 0
+		for a in text.split(div):
+			if cntr + len(a) > 2000:
+				await channel.send(out)
+				out = a + div
+				cntr = len(a) + 1
+			else:
+				out +=  a + div
+				cntr += len(a) + 1
+		if out:
+			await channel.send(out)
 
 	client.run(TOKEN)
+
+
+
+
 
 if __name__ == "__main__":
 	main()
