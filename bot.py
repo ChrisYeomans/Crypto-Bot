@@ -1,5 +1,5 @@
 #! usr/bin/env python3
-import discord, dbl, asyncio
+import discord, asyncio
 from crypto_price_scrape import get_price, get_crypto_list
 
 HELP_MESSAGE = """
