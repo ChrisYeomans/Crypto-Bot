@@ -1,1 +1,1 @@
-python3 bot.py < token.txt
+python3 bot.py < token.txt 2> /app/Log.txt

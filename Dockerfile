@@ -17,4 +17,4 @@ RUN pip install -r requirements.txt --user
 CMD ["/bin/bash", "-c", "set -e && ./entrypoint.sh"]
 
 # docker build . -t c_bot 
-# docker run --network="host" --rm -d --name cb c_bot
+# docker run --network="host" --rm -d --name -t cb c_bot
